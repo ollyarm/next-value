@@ -23,4 +23,11 @@ public class NextValue
     public static implicit operator char(NextValue next) => (char)((next.Int() - 1) % 26 + 65);
     public char Char() => (char)this;
 
+    public static implicit operator Guid(NextValue next)
+    {
+        var stringValue = ((int)next).ToString("D32");
+        return System.Guid.Parse(stringValue);
+    }
+
+    public Guid Guid() => (Guid)this;
 }
