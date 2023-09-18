@@ -63,4 +63,40 @@ public class NextValueStringTests
         var nextValue = new NextValue();
         Assert.That(nextValue.StringList(), Is.EqualTo(new[] { 1, 2, 3 }.Select(i => $"String Value {i}")));
     }
+
+
+    [Test]
+    public void NextValue_StringOfLength_returns_correct_length()
+    {
+        var nextValue = new NextValue();
+        Assert.That(nextValue.StringOfLength(10), Is.EqualTo("AAAAAAAAAA"));
+    }
+
+    [Test]
+    public void NextValue_StringOfLength__with_seed_returns_correct_length()
+    {
+        var nextValue = new NextValue(50);
+        Assert.That(nextValue.StringOfLength(18), Is.EqualTo("XXXXXXXXXXXXXXXXXX"));
+    }
+
+    [Test]
+    public void NextValue_NumericString_returns_correct_length()
+    {
+        var nextValue = new NextValue();
+        Assert.That(nextValue.NumericStringOfLength(10), Is.EqualTo("1111111111"));
+    }
+
+    [Test]
+    public void NextValue_NumericStringOfLength_with_seed_returns_correct_length()
+    {
+        var nextValue = new NextValue(523);
+        Assert.That(nextValue.NumericStringOfLength(19), Is.EqualTo("5235235235235235235"));
+    }
+
+    [Test]
+    public void NextValue_NumericStringOfLength_with_seed_and_shorter_length_returns_correct_length()
+    {
+        var nextValue = new NextValue(523);
+        Assert.That(nextValue.NumericStringOfLength(2), Is.EqualTo("52"));
+    }
 }
