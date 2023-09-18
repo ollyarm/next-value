@@ -49,6 +49,59 @@ public class NextValueObjectTests
         Assert.That(result, Is.EqualTo(original));
     }
 
+    [Test]
+    public void NextValue_Array_new_objects_values_are_ascending()
+    {
+        var nextValue = new NextValue();
+
+        var values = nextValue.Array<TestObject>(10);
+        Assert.Multiple(() =>
+        {
+            Assert.That(values, Has.Length.EqualTo(10).And.All.InstanceOf<TestObject>());
+            Assert.That(values.Select(item => item.ExampleInt), Is.Ordered.Ascending);
+        });
+    }
+
+    [Test]
+    public void NextValue_Array_default_has_3_values()
+    {
+        var nextValue = new NextValue();
+        Assert.That(nextValue.Array<TestObject>(), Has.Length.EqualTo(3).And.All.InstanceOf<TestObject>());
+    }
+
+    [Test]
+    public void NextValue_List_new_objects_values_are_ascending()
+    {
+        var nextValue = new NextValue();
+
+        var list = nextValue.List<TestObject>(10);
+        Assert.Multiple(() =>
+        {
+            Assert.That(list, Has.Count.EqualTo(10).And.All.InstanceOf<TestObject>());
+            Assert.That(list.Select(item => item.ExampleDateTime), Is.Ordered.Ascending);
+        });
+    }
+
+    [Test]
+    public void NextValue_List_default_has_3_values()
+    {
+        var nextValue = new NextValue();
+        Assert.That(nextValue.List<TestObject>(), Has.Count.EqualTo(3).And.All.InstanceOf<TestObject>());
+    }
+
+    [Test]
+    public void NextValue_Array_with_construction_default_has_3_values()
+    {
+        var nextValue = new NextValue();
+        Assert.That(nextValue.Array(() => new TestObject()), Has.Length.EqualTo(3).And.All.InstanceOf<TestObject>());
+    }
+    [Test]
+    public void NextValue_List_with_construction_default_has_3_values()
+    {
+        var nextValue = new NextValue();
+        Assert.That(nextValue.List(() => new TestObject()), Has.Count.EqualTo(3).And.All.InstanceOf<TestObject>());
+    }
+
     private class TestObject
     {
         public int ExampleInt { get; set; }
