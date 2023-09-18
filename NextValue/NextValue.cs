@@ -19,4 +19,8 @@ public class NextValue
 
     public static implicit operator string(NextValue next) => $"String Value {(int)next}";
     public string String() => (string)this;
+
+    public static implicit operator char(NextValue next) => (char)((next.Int() - 1) % 26 + 65);
+    public char Char() => (char)this;
+
 }
