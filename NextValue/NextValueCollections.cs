@@ -13,4 +13,10 @@ public static class NextValueCollections
 
     public static List<int> IntList(this NextValue nextValue, int count = 3)
         => nextValue.List(() => (int)nextValue, count);
+
+    public static string[] StringArray(this NextValue nextValue, int count = 3)
+        => nextValue.Array(() => (string)nextValue, count);
+
+    public static List<string> StringList(this NextValue nextValue, int count = 3)
+        => nextValue.List(() => (string)nextValue, count);
 }
