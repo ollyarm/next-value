@@ -1,0 +1,6 @@
+/.vs/
+/**/bin/
+/**/obj/
+/coverage.xml
+/report/
+/test-results/
