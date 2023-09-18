@@ -20,6 +20,12 @@ public static class NextValueCollections
     public static List<string> StringList(this NextValue nextValue, int count = 3)
         => nextValue.List(() => (string)nextValue, count);
 
+    public static decimal[] DecimalArray(this NextValue nextValue, int count = 3)
+    => nextValue.Array(() => (decimal)nextValue, count);
+
+    public static List<decimal> DecimalList(this NextValue nextValue, int count = 3)
+        => nextValue.List(() => (decimal)nextValue, count);
+
     public static Guid[] GuidsArray(this NextValue nextValue, int count = 3)
         => nextValue.Array(() => (Guid)nextValue, count);
 

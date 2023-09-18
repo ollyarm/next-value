@@ -50,4 +50,21 @@ public class NextValue
     }
 
     public DateTimeOffset DateTimeOffset() => (DateTimeOffset)this;
+
+    public static implicit operator decimal(NextValue next)
+    {
+        var intPart = (decimal)next.Int();
+        var decimalPart = ((decimal) next.Int() / 100) % 1;
+        // if decimal part is round number then convert int part to decimal part
+        if(decimalPart == 0m)
+        {
+            decimalPart = (intPart / 100) % 1;;
+        }
+        return intPart + decimalPart;
+    }
+    public decimal Decimal() => (decimal)this;
+
+    public static implicit operator double(NextValue next) => (double)(decimal)next;
+    public static implicit operator float(NextValue next) => (float)(decimal)next;
+
 }
