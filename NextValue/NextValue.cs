@@ -30,4 +30,24 @@ public class NextValue
     }
 
     public Guid Guid() => (Guid)this;
+
+    private static readonly DateTime _dateSeed = System.DateTime.Parse("1900-01-01 12:00:00");
+    private static readonly long _dateGap = TimeSpan.Parse("06:12:24").Ticks;
+    public static implicit operator DateTime(NextValue next)
+    {
+        //var ticks = (long)next * 47360000000;
+        var ticks = _dateGap * (int)next;
+        return System.DateTime.SpecifyKind(_dateSeed.AddTicks(ticks), DateTimeKind.Utc);
+    }
+
+    public DateTime DateTime() => (DateTime)this;
+
+    public static implicit operator DateTimeOffset(NextValue next)
+    {
+        var date = (DateTime)next;
+        var offset = (((int)next) % 24 - 12);
+        return ((DateTimeOffset)date).ToOffset(TimeSpan.FromHours(offset));
+    }
+
+    public DateTimeOffset DateTimeOffset() => (DateTimeOffset)this;
 }

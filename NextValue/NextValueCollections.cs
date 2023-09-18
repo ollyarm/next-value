@@ -26,4 +26,15 @@ public static class NextValueCollections
     public static List<Guid> GuidsList(this NextValue nextValue, int count = 3)
         => nextValue.List(() => (Guid)nextValue, count);
 
+    public static DateTime[] DateTimeArray(this NextValue nextValue, int count = 3)
+        => nextValue.Array(() => (DateTime)nextValue, count);
+
+    public static List<DateTime> DateTimeList(this NextValue nextValue, int count = 3)
+        => nextValue.List(() => (DateTime)nextValue, count);
+
+    public static DateTimeOffset[] DateTimeOffsetArray(this NextValue nextValue, int count = 3)
+        => nextValue.Array(() => (DateTimeOffset)nextValue, count);
+
+    public static List<DateTimeOffset> DateTimeOffsetList(this NextValue nextValue, int count = 3)
+        => nextValue.List(() => (DateTimeOffset)nextValue, count);
 }
