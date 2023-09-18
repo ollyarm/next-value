@@ -34,4 +34,35 @@ public class NextValueIntTests
         var nextValue = new NextValue(100);
         Assert.That(nextValue.Int(), Is.EqualTo(100));
     }
+
+    [Test]
+    public void NextValue_IntArray_values_are_ascending()
+    {
+        var nextValue = new NextValue();
+        Assert.That(nextValue.IntArray(10), Is.EqualTo(new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }));
+
+    }
+
+    [Test]
+    public void NextValue_IntArray_default_has_3_values()
+    {
+        var nextValue = new NextValue();
+        Assert.That(nextValue.IntArray(), Is.EqualTo(new[] { 1, 2, 3 }));
+    }
+
+    [Test]
+    public void NextValue_IntList_values_are_ascending()
+    {
+        var nextValue = new NextValue();
+        Assert.That(nextValue.IntList(10), Is.EqualTo(new[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }));
+
+    }
+
+    [Test]
+    public void NextValue_IntList_default_has_3_values()
+    {
+        var nextValue = new NextValue();
+        Assert.That(nextValue.IntList(), Is.EqualTo(new[] { 1, 2, 3 }));
+    }
+
 }
