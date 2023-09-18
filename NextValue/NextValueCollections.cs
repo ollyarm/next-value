@@ -19,4 +19,11 @@ public static class NextValueCollections
 
     public static List<string> StringList(this NextValue nextValue, int count = 3)
         => nextValue.List(() => (string)nextValue, count);
+
+    public static Guid[] GuidsArray(this NextValue nextValue, int count = 3)
+        => nextValue.Array(() => (Guid)nextValue, count);
+
+    public static List<Guid> GuidsList(this NextValue nextValue, int count = 3)
+        => nextValue.List(() => (Guid)nextValue, count);
+
 }
