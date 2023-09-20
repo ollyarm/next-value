@@ -9,7 +9,7 @@ on:
     - "main"
 
 env:
-  VERSION_NUMBER: ${{ format('0.0.{0}{1}', github.run_number, github.ref != 'refs/heads/main' && '-preview' || '')}}
+  VERSION_NUMBER: ${{ format('0.0.{0}{1}', github.run_number, github.ref != 'refs/heads/main' && '-preview' || '-beta')}}
 jobs:
   build:
 
@@ -36,7 +36,7 @@ jobs:
         # Use always() to always run this step to publish test results when there are test failures
         if: ${{ always() }}
       - name: Package
-        run: dotnet pack --configuration Release --no-restore --version ${{env.VERSION_NUMBER}} -o /package
+        run: dotnet pack NextValue/NextValue.csproj --configuration Release --no-restore -o ./package --p:Version=${{env.VERSION_NUMBER}}
       - name: Create Tag
         uses: actions/github-script@v6
         with:
@@ -49,3 +49,5 @@ jobs:
                 ref: `refs/tags/${VERSION_NUMBER}`,
                 sha: context.sha
             })
+      - name: Publish to NuGet
+        run: nuget push package/NextVersion${{env.VERSION_NUMBER}}.nupkg -Source 'https://api.nuget.org/v3/index.json' -ApiKey ${{secrets.NUGET_API_KEY}}      
