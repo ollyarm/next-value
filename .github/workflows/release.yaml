@@ -9,7 +9,7 @@ on:
     - "main"
 
 env:
-  VERSION_NUMBER: ${{ format('0.0.{0}{1}', github.run_number, github.ref != 'refs/heads/main' && '-preview' || '')}}
+  VERSION_NUMBER: ${{ format('0.0.{0}{1}', github.run_number, github.ref != 'refs/heads/main' && '-preview' || '-beta')}}
 jobs:
   build:
 
@@ -27,16 +27,9 @@ jobs:
       - name: Build
         run: dotnet build --configuration Release --no-restore
       - name: Test
-        run: dotnet test --no-restore --verbosity normal --logger "trx;LogFileName=test-results.trx" --results-directory "test-results"
-      - name: Upload test results
-        uses: actions/upload-artifact@v3
-        with:
-          name: "test-results.trx"
-          path: test-results
-        # Use always() to always run this step to publish test results when there are test failures
-        if: ${{ always() }}
+        run: dotnet test --no-restore --verbosity normal
       - name: Package
-        run: dotnet pack --configuration Release --no-restore --version ${{env.VERSION_NUMBER}} -o /package
+        run: dotnet pack --configuration Release --no-restore --p:Version=${{env.VERSION_NUMBER}} --output .
       - name: Create Tag
         uses: actions/github-script@v6
         with:
@@ -49,3 +42,5 @@ jobs:
                 ref: `refs/tags/${VERSION_NUMBER}`,
                 sha: context.sha
             })
+      - name: Publish to NuGet
+        run: nuget push NextVersion${{env.VERSION_NUMBER}}.nupkg -Source 'https://api.nuget.org/v3/index.json' -ApiKey ${{secrets.NUGET_API_KEY}}      
