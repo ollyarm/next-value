@@ -8,6 +8,8 @@ on:
     branches:
     - "feature/release-pipline"
 
+env:
+  VERSION_NUMBER: ${{ format('0.0.{0}{1}', github.run_number, github.ref != 'refs/heads/main' && '-preview' || '')}}
 jobs:
   build:
 
@@ -32,13 +34,5 @@ jobs:
           path: test-results
         # Use always() to always run this step to publish test results when there are test failures
         if: ${{ always() }}
-      - name: Sets preview version number
-        run: |
-          echo "VERSION_NUMBER=0.0.${{ github.run_number }}-preview" >> $GITHUB_ENV
-        if: ${{github.branch != "main"}}
-      - name: Sets version number
-        run: |
-          echo "VERSION_NUMBER=0.0.${{ github.run_number }}" >> $GITHUB_ENV
-        if: ${{github.branch == "main"}}
       - name: Package
         run: dotnet pack --configuration Release --no-restore --version ${{env.VERSION_NUMBER}} -o /package
