@@ -14,7 +14,7 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-
+    permissions: write-all
     steps:
       - uses: actions/checkout@v3
       - name: Setup .NET Core SDK
@@ -36,3 +36,15 @@ jobs:
         if: ${{ always() }}
       - name: Package
         run: dotnet pack --configuration Release --no-restore --version ${{env.VERSION_NUMBER}} -o /package
+      - name: Create Tag
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}  
+          script: |
+            const {VERSION_NUMBER} = process.env          
+            github.rest.git.createRef({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                ref: `refs/tags/${VERSION_NUMBER}`,
+                sha: context.sha
+            })
