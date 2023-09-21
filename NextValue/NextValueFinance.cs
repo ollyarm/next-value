@@ -1,4 +1,4 @@
-﻿namespace NextValue;
+﻿namespace NextValues;
 
 using System.Numerics;
 using static System.Net.Mime.MediaTypeNames;

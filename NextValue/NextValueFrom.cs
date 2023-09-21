@@ -1,4 +1,4 @@
-﻿namespace NextValue;
+﻿namespace NextValues;
 using System.Collections.Generic;
 
 public static class NextValueFrom
