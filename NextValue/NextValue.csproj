@@ -5,10 +5,20 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>NextValues</RootNamespace>
     <Title>NextValue</Title>
-    <Authors>ollyarm</Authors>
+    <Authors>Oliver Armfelt</Authors>
     <Description>Simple set up for predicatble unimportant test data</Description>
     <PackageProjectUrl>https://github.com/ollyarm/next-value</PackageProjectUrl>
     <RepositoryUrl>https://github.com/ollyarm/next-value</RepositoryUrl>
+    <Copyright>Olvier Armfelt</Copyright>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageTags>nextvalue; next value; test data; data generator;  testing; .net;</PackageTags>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
 
 </Project>
