@@ -1,12 +1,12 @@
 # next-value
 
-A very simple library for setting up predictable test data and not based on any randomization like Guids
+A very simple library for setting up predictable test data and not based on any randomisation like Guids
 
 - Each value is different.
 
 However
 
-- Test data is exactly the same every for test run in every environment 
+- Test data is exactly the same every for test run in every environment.
 
 ## Download & Install
 
@@ -19,16 +19,16 @@ Install-Package NextValue
 dotnet add package NextValue
 ```
 
-### Creating Data
+## Creating Data
 
-#### Ints
+### Ints
 ```csharp
     nextValue.Int();
     // or
     (int) nextValue;
 ```
 
-#### Strings
+### Strings
 ```csharp
     nextValue.String();
     // or
@@ -43,7 +43,7 @@ dotnet add package NextValue
     nextValue.NumericStringOfLength(10);
 ```
 
-#### Decimals, Doubles, Floats
+### Decimals, Doubles, Floats
 ```csharp
     nextValue.Double();
     // or
@@ -54,7 +54,7 @@ dotnet add package NextValue
     (float) nextValue;
 ```
 
-#### Dates
+### Dates
 ```csharp
     nextValue.DateTime();
     // or
@@ -65,14 +65,14 @@ dotnet add package NextValue
     (DateTimeOffset) nextValue;
 ```
 
-#### Guids
+### Guids
 ```csharp
     nextValue.Guid();
     // or
     (guid) nextValue;
 ```
 
-#### Collections
+### Collections
 ```csharp
     nextValue.IntArray(10);
     // or
@@ -102,7 +102,7 @@ dotnet add package NextValue
     // or
     nextValue.List<Example>(10);
 ```
-#### Objects
+### Objects
 ```csharp
     nextValue.New<Example>();
     // or
@@ -143,7 +143,7 @@ dotnet add package NextValue
     }
 ```
 
-NB: There is a convention to never pick an enum with a value of 0 
+NB: There is a convention to never pick an enum with a value of 0.
 ### Options
 ```csharp
     nextValue.From(new[]{ "Option1", "Option2", "Option3",  });
@@ -160,6 +160,8 @@ NB: There is a convention to never pick an enum with a value of 0
 ```
 
 ## Extending
+
+NextValue is very easy to extend with your own customisations no matter how complex your data requirements are.
 
 ### Extend using extension methods
 ```csharp
@@ -335,11 +337,13 @@ public class ExampleComplexObject
 
 ## Set up
 
-Best way to set up probably depends on how you set up your other test dependencies, however here are some examples
+Best way to set up probably depends on how you set up your other test dependencies, however here are some examples.
 
-#### At its simplest
+In principle create a new instance for every test.
 
-##### NUnit
+### At its simplest
+
+#### NUnit
 ```csharp
 using NextValues;
 using NUnit.Framework;
@@ -373,7 +377,7 @@ public class NUnitSimpleSetup
 }
 ```
 
-##### XUnit
+#### XUnit
 ```csharp
 using NextValues;
 using Xunit;
@@ -405,9 +409,9 @@ public class XUnitSimpleSetup
 }
 ```
 
-#### Using Base Class Setup
+### Using Base Class Setup
 
-##### NUnit
+#### NUnit
 ```csharp
 using NextValues;
 using NUnit.Framework;
@@ -436,7 +440,7 @@ public abstract class NUnitTestBase
 }
 ```
 
-##### XUnit
+#### XUnit
 ```csharp
 using NextValues;
 using Xunit;
@@ -463,9 +467,8 @@ public abstract class XUnitTestBase
 }
 
 ```
-
-#### Using Dependency Injection
-##### NUnit
+### Using Dependency Injection
+#### NUnit
 ```csharp
 using Microsoft.Extensions.DependencyInjection;
 using NextValues;
@@ -511,7 +514,7 @@ public static class Tests
 }
 ````
 
-##### XUnit
+#### XUnit
 ```csharp
 using Microsoft.Extensions.DependencyInjection;
 using NextValues;
@@ -562,5 +565,3 @@ public class IOCFixture
 [CollectionDefinition("IOC Setup")]
 public class IOCFixtureCollection : ICollectionFixture<IOCFixture> { }
 ````
-
-

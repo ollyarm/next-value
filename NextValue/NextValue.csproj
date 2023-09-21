@@ -12,6 +12,7 @@
     <Copyright>Olvier Armfelt</Copyright>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageTags>nextvalue; next value; test data; data generator;  testing; .net;</PackageTags>
+    <PackageLicenseExpression> Apache-2.0</PackageLicenseExpression>
   </PropertyGroup>
 
   <ItemGroup>
