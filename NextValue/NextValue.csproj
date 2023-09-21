@@ -4,6 +4,11 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>NextValues</RootNamespace>
+    <Title>NextValue</Title>
+    <Authors>ollyarm</Authors>
+    <Description>Simple set up for predicatble unimportant test data</Description>
+    <PackageProjectUrl>https://github.com/ollyarm/next-value</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/ollyarm/next-value</RepositoryUrl>
   </PropertyGroup>
 
 </Project>
