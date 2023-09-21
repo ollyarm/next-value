@@ -1,6 +1,6 @@
 ﻿namespace NextValueTests;
 
-using NextValue;
+using NextValues;
 
 public class NextValueFromTests
 {

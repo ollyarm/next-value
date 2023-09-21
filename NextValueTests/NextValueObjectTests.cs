@@ -1,7 +1,7 @@
 ﻿namespace NextValueTests;
 
 using Microsoft.VisualStudio.TestPlatform.ObjectModel;
-using NextValue;
+using NextValues;
 
 public class NextValueObjectTests
 {

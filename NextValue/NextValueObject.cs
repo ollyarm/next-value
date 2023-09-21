@@ -1,4 +1,4 @@
-﻿namespace NextValue;
+﻿namespace NextValues;
 
 public static class NextValueObject
 {
