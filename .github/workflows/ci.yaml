@@ -11,7 +11,10 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-
+    permissions: 
+      pull-requests: write
+      statuses: write
+      checks: write
     steps:
       - uses: actions/checkout@v3
       - name: Setup .NET Core SDK
@@ -28,6 +31,22 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: "test-results.trx"
-          path: test-results
-        # Use always() to always run this step to publish test results when there are test failures
+          path: test-results/test-results.trx
+        if: ${{ always() }}
+      - name: Test summary
+        uses: im-open/process-dotnet-test-results@v2.3.4
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          base-directory: './test-results'
+          create-results-file: true
+          create-status-check: true
+          create-pr-comment: true
+          update-comment-if-one-exists: false 
+          comment-identifier: 'unit-tests'
+        if: always()
+      - name: Upload test summary
+        uses: actions/upload-artifact@v3
+        with:
+          name: "test-results.md"
+          path: test-results.md
         if: ${{ always() }}
