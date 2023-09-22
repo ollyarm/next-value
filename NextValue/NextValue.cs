@@ -35,7 +35,6 @@ public class NextValue
     private static readonly long _dateGap = TimeSpan.Parse("06:12:24").Ticks;
     public static implicit operator DateTime(NextValue next)
     {
-        //var ticks = (long)next * 47360000000;
         var ticks = _dateGap * (int)next;
         return System.DateTime.SpecifyKind(_dateSeed.AddTicks(ticks), DateTimeKind.Utc);
     }
