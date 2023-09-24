@@ -6,8 +6,8 @@ public static class NextValueStrings
     public static string NumericStringOfLength(this NextValue next, int length)
     {
         var val = ((int)next).ToString();
-        var times = (length / val.Length) + 1;
-        var result = val + string.Join(val, new string[times]);
+        var times = (length / val.Length) + 2;
+        var result = string.Join(val, new string[times]);
         return result[..length];
     }
 }

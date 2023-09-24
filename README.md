@@ -6,7 +6,7 @@ A very simple library for setting up predictable test data and not based on any 
 
 However
 
-- Test data is exactly the same every for test run in every environment.
+- Test data is exactly the same for every test run in every environment.
 
 ## Download & Install
 
