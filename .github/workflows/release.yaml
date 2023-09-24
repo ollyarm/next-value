@@ -41,14 +41,6 @@ jobs:
       - name: Test summary
         uses: dorny/test-reporter@v1
         with:
-          artifact: test-results
-          name: "Unit Tests"                  
-          path: 'test-results.trx'
-          reporter: dotnet-trx
-        if: ${{ always() }}
-      - name: Test summary
-        uses: dorny/test-reporter@v1
-        with:
           name: "Unit Tests"                  
           path: 'test-results/test-results.trx'
           reporter: dotnet-trx
