@@ -14,6 +14,12 @@ public class NextValue
         _seed = seed;
     }
 
+    public NextValue Reset(int seed = 1)
+    {
+        _seed = seed;
+        return this;
+    }
+
     public static implicit operator int(NextValue next) => next._seed++;
     public int Int() => (int)this;
 
@@ -53,11 +59,11 @@ public class NextValue
     public static implicit operator decimal(NextValue next)
     {
         var intPart = (decimal)next.Int();
-        var decimalPart = ((decimal) next.Int() / 100) % 1;
+        var decimalPart = ((decimal)next.Int() / 100) % 1;
         // if decimal part is round number then convert int part to decimal part
-        if(decimalPart == 0m)
+        if (decimalPart == 0m)
         {
-            decimalPart = (intPart / 100) % 1;;
+            decimalPart = (intPart / 100) % 1; ;
         }
         return intPart + decimalPart;
     }

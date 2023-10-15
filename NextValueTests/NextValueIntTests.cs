@@ -65,4 +65,25 @@ public class NextValueIntTests
         Assert.That(nextValue.IntList(), Is.EqualTo(new[] { 1, 2, 3 }));
     }
 
+    [Test]
+    public void NextValue_Reset_next_int_is_1()
+    {
+        var nextValue = new NextValue(100);
+        var int1 = (int)nextValue;
+        var int2 = (int)nextValue.Reset();
+
+        Assert.That(int1, Is.EqualTo(100));
+        Assert.That(int2, Is.EqualTo(1));
+    }
+
+    [Test]
+    public void NextValue_Reset_with_value_next_int_is_value()
+    {
+        var nextValue = new NextValue(100);
+        var int1 = (int)nextValue;
+        var int2 = (int)nextValue.Reset(255);
+
+        Assert.That(int1, Is.EqualTo(100));
+        Assert.That(int2, Is.EqualTo(255));
+    }
 }

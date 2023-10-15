@@ -74,33 +74,40 @@ dotnet add package NextValue
 
 ### Collections
 ```csharp
+    //defaults to 3 items if number not specified as do following
+    nextValue.IntArray(); 
+    // or
     nextValue.IntArray(10);
     // or
-    nextValue.IntList(10);
+    nextValue.IntList();
     // or
-    nextValue.StringArray(10);
+    nextValue.StringArray();
     // or
-    nextValue.StringList(10);
+    nextValue.StringList();
     // or
-    nextValue.GuidArray(10);
+    nextValue.GuidArray();
     // or
-    nextValue.GuidList(10);
+    nextValue.GuidList();
     // or
-    nextValue.DecimalArray(10);
+    nextValue.DecimalArray();
     // or
-    nextValue.DecimalList(10);
+    nextValue.DecimalList();
     // or
-    nextValue.DateTimeArray(10);
+    nextValue.DateTimeArray();
     // or
-    nextValue.DateTimeList(10);
+    nextValue.DateTimeList();
     // or
-    nextValue.DateTimeOffsetArray(10);
+    nextValue.DateTimeOffsetArray();
     // or
-    nextValue.DateTimeOffsetList(10);
+    nextValue.DateTimeOffsetList();
     // or
-    nextValue.Array<Example>(10);
+    nextValue.Array<Example>();
     // or
-    nextValue.List<Example>(10);
+    nextValue.List<Example>();
+    // or
+    nextValue.Array(() => new Example());
+    // or
+    nextValue.List(10, () => new Example());
 ```
 ### Objects
 ```csharp
@@ -565,3 +572,11 @@ public class IOCFixture
 [CollectionDefinition("IOC Setup")]
 public class IOCFixtureCollection : ICollectionFixture<IOCFixture> { }
 ````
+
+If a instance must be shared across tests (for example in a component test api setup)
+Reset can be called to reinitalise before each test.
+```csharp
+    nextValue.Reset();
+    // or
+    nextValue.Reset(100);
+```
