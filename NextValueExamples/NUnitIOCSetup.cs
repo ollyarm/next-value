@@ -30,7 +30,7 @@ public abstract class NUnitIOCTestBase
 [SetUpFixture]
 public static class Tests
 {
-    public static IServiceProvider ServiceProvider;
+    public static ServiceProvider ServiceProvider;
 
     [OneTimeSetUp]
     public static void OneTimeSetup()
@@ -38,5 +38,11 @@ public static class Tests
         ServiceProvider = new ServiceCollection()
             .AddScoped<NextValue>()
             .BuildServiceProvider();
+    }
+
+    [OneTimeTearDown]
+    public static void OneTimeTearDown()
+    {
+        ServiceProvider?.Dispose();
     }
 }
