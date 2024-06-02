@@ -60,9 +60,17 @@ dotnet add package NextValue
     // or
     nextValue.DateTimeOffset();
     // or
+    nextValue.DateOnly();
+    // or
+    nextValue.TimeOnly();
+    // or
     (DateTime) nextValue;
     // or
     (DateTimeOffset) nextValue;
+    // or
+    (DateOnly) nextValue;
+    // or
+    (TimeOnly) nextValue;
 ```
 
 ### Guids
