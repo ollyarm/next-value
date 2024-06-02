@@ -46,12 +46,26 @@ public class NextValue
     }
 
     public DateTime DateTime() => (DateTime)this;
+    public DateOnly DateOnly() => (DateOnly)this;
+    public TimeOnly TimeOnly() => (TimeOnly)this;
 
     public static implicit operator DateTimeOffset(NextValue next)
     {
         var date = (DateTime)next;
         var offset = (((int)next) % 24 - 12);
         return ((DateTimeOffset)date).ToOffset(TimeSpan.FromHours(offset));
+    }
+
+    public static implicit operator DateOnly(NextValue next)
+    {
+        var date = _dateSeed.AddDays(next * 5);
+        return System.DateOnly.FromDateTime(date);
+    }
+
+    public static implicit operator TimeOnly(NextValue next)
+    {
+        var date = _dateSeed.AddSeconds(next * 175);
+        return System.TimeOnly.FromDateTime(date);
     }
 
     public DateTimeOffset DateTimeOffset() => (DateTimeOffset)this;
