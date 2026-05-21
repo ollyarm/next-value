@@ -16,23 +16,25 @@ public class NextValueObjectTests
             Assert.That(result, Is.Not.Null);
             Assert.That(result.ExampleInt, Is.EqualTo(1));
             Assert.That(result.ExampleNullableInt, Is.EqualTo(2));
-            Assert.That(result.ExampleString, Is.EqualTo("ExampleString 3"));
-            Assert.That(result.ExampleDecimal, Is.EqualTo(4.05m));
-            Assert.That(result.ExampleNullableDecimal, Is.EqualTo(6.07m));
-            Assert.That(result.ExampleDouble, Is.EqualTo(8.09d));
-            Assert.That(result.ExampleNullableDouble, Is.EqualTo(10.11d));
-            Assert.That(result.ExampleFloat, Is.EqualTo(12.13f));
-            Assert.That(result.ExampleNullableFloat, Is.EqualTo(14.15f));
+            Assert.That(result.ExampleLong, Is.EqualTo(3));
+            Assert.That(result.ExampleNullableLong, Is.EqualTo(4));
+            Assert.That(result.ExampleString, Is.EqualTo("ExampleString 5"));
+            Assert.That(result.ExampleDecimal, Is.EqualTo(6.07m));
+            Assert.That(result.ExampleNullableDecimal, Is.EqualTo(8.09m));
+            Assert.That(result.ExampleDouble, Is.EqualTo(10.11d));
+            Assert.That(result.ExampleNullableDouble, Is.EqualTo(12.13d));
+            Assert.That(result.ExampleFloat, Is.EqualTo(14.15f));
+            Assert.That(result.ExampleNullableFloat, Is.EqualTo(16.17f));
             Assert.That(result.ExampleBool, Is.EqualTo(true));
             Assert.That(result.ExampleNullableBool, Is.EqualTo(true));
-            Assert.That(result.ExampleDateTime, Is.EqualTo(DateTime.Parse("1900-01-06 03:43:12")));
-            Assert.That(result.ExampleNullableDateTime, Is.EqualTo(DateTime.Parse("1900-01-06 09:55:36")));
-            Assert.That(result.ExampleDateTimeOffset, Is.EqualTo(DateTimeOffset.Parse("1900-01-07 01:08:00+09:00")));
-            Assert.That(result.ExampleNullableDateTimeOffset, Is.EqualTo(DateTimeOffset.Parse("1900-01-07 15:32:48+11:00")));
-            Assert.That(result.ExampleGuid, Is.EqualTo(Guid.Parse("00000000-0000-0000-0000-000000000024")));
-            Assert.That(result.ExampleNullableGuid, Is.EqualTo(Guid.Parse("00000000-0000-0000-0000-000000000025")));
-            Assert.That(result.ExampleEnum, Is.EqualTo(TestObject.TestEnum.Two));
-            Assert.That(result.ExampleNullableEnum, Is.EqualTo(TestObject.TestEnum.Three));
+            Assert.That(result.ExampleDateTime, Is.EqualTo(DateTime.Parse("1900-01-06 16:08:00")));
+            Assert.That(result.ExampleNullableDateTime, Is.EqualTo(DateTime.Parse("1900-01-06 22:20:24")));
+            Assert.That(result.ExampleDateTimeOffset, Is.EqualTo(DateTimeOffset.Parse("1900-01-07 15:32:48+11:00")));
+            Assert.That(result.ExampleNullableDateTimeOffset, Is.EqualTo(DateTimeOffset.Parse("1900-01-07 05:57:36-11:00")));
+            Assert.That(result.ExampleGuid, Is.EqualTo(Guid.Parse("00000000-0000-0000-0000-000000000026")));    
+            Assert.That(result.ExampleNullableGuid, Is.EqualTo(Guid.Parse("00000000-0000-0000-0000-000000000027")));
+            Assert.That(result.ExampleEnum, Is.EqualTo(TestObject.TestEnum.Ten));
+            Assert.That(result.ExampleNullableEnum, Is.EqualTo(TestObject.TestEnum.One));
             Assert.That(result.ExampleObject, Is.Null);
         });
     }
@@ -106,6 +108,8 @@ public class NextValueObjectTests
     {
         public int ExampleInt { get; set; }
         public int? ExampleNullableInt { get; set; }
+        public long ExampleLong { get; set; }
+        public long? ExampleNullableLong { get; set; }
         public string ExampleString { get; set; } = "";
         public decimal ExampleDecimal { get; set; }
         public decimal? ExampleNullableDecimal { get; set; }

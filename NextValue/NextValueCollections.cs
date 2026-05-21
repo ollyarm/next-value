@@ -20,6 +20,12 @@ public static class NextValueCollections
     public static List<int> IntList(this NextValue nextValue, int count = 3)
         => nextValue.List(() => (int)nextValue, count);
 
+    public static long[] LongArray(this NextValue nextValue, int count = 3)
+        => nextValue.Array(() => (long)nextValue, count);
+
+    public static List<long> LongList(this NextValue nextValue, int count = 3)
+        => nextValue.List(() => (long)nextValue, count);
+
     public static string[] StringArray(this NextValue nextValue, int count = 3)
         => nextValue.Array(() => (string)nextValue, count);
 
