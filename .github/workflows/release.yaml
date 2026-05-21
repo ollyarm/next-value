@@ -62,4 +62,4 @@ jobs:
       - name: Publish to NuGet
         run: dotnet nuget push package/NextValue.${{env.VERSION_NUMBER}}.nupkg --source 'https://api.nuget.org/v3/index.json' --api-key ${{secrets.NUGET_API_KEY}}
       - name: Publish to GitHub
-        run: nuget push package/NextValue.${{env.VERSION_NUMBER}}.nupkg -Source 'https://nuget.pkg.github.com/ollyarm/index.json' -ApiKey ${{secrets.GITHUB_TOKEN}}      
+        run: dotnet nuget push package/NextValue.${{env.VERSION_NUMBER}}.nupkg --source 'https://nuget.pkg.github.com/ollyarm/index.json' --api-key ${{secrets.GITHUB_TOKEN}}      
