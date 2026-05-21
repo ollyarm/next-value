@@ -17,6 +17,10 @@ public static class NextValueObject
             {
                 p.SetValue(item, (int)nextValue);
             }
+            else if (p.PropertyType == typeof(long) || p.PropertyType == typeof(long?))
+            {
+                p.SetValue(item, (long)nextValue);
+            }
             else if (p.PropertyType == typeof(decimal) || p.PropertyType == typeof(decimal?))
             {
                 p.SetValue(item, (decimal)nextValue);

@@ -23,6 +23,9 @@ public class NextValue
     public static implicit operator int(NextValue next) => next._seed++;
     public int Int() => (int)this;
 
+    public static implicit operator long(NextValue next) => next._seed++;
+    public long Long() => (long)this;
+
     public static implicit operator string(NextValue next) => $"String Value {(int)next}";
     public string String() => (string)this;
 
